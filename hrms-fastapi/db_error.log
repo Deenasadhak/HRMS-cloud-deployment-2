@@ -1,0 +1,81 @@
+Step 3 Failed: (psycopg2.errors.UndefinedColumn) column "id" referenced in foreign key constraint does not exist
+
+[SQL: 
+CREATE TABLE leave_requests (
+	id SERIAL NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	leave_type leavetype NOT NULL, 
+	start_date DATE NOT NULL, 
+	end_date DATE NOT NULL, 
+	reason VARCHAR, 
+	status leavestatus, 
+	applied_on TIMESTAMP WITHOUT TIME ZONE, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employees (id)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.UndefinedColumn: column "id" referenced in foreign key constraint does not exist
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\reset_db.py", line 40, in <module>
+    Base.metadata.create_all(bind=engine, tables=[Attendance.__table__, LeaveRequest.__table__, Payroll.__table__])
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\sql\schema.py", line 5928, in create_all
+    bind._run_ddl_visitor(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 3260, in _run_ddl_visitor
+    conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2467, in _run_ddl_visitor
+    ).traverse_single(element)
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\sql\visitors.py", line 661, in traverse_single
+    return meth(obj, **kw)
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\sql\ddl.py", line 984, in visit_metadata
+    self.traverse_single(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\sql\visitors.py", line 661, in traverse_single
+    return meth(obj, **kw)
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\sql\ddl.py", line 1022, in visit_table
+    )._invoke_with(self.connection)
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\sql\ddl.py", line 321, in _invoke_with
+    return bind.execute(self)
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1419, in execute
+    return meth(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\sql\ddl.py", line 187, in _execute_on_connection
+    return connection._execute_ddl(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1530, in _execute_ddl
+    ret = self._execute_context(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 2363, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\deena\Documents\Deenasadhak\LPU\SEM 6\Placement Preparation class\HRMS cloud deployment 2\hrms-fastapi\venv\lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.ProgrammingError: (psycopg2.errors.UndefinedColumn) column "id" referenced in foreign key constraint does not exist
+
+[SQL: 
+CREATE TABLE leave_requests (
+	id SERIAL NOT NULL, 
+	employee_id INTEGER NOT NULL, 
+	leave_type leavetype NOT NULL, 
+	start_date DATE NOT NULL, 
+	end_date DATE NOT NULL, 
+	reason VARCHAR, 
+	status leavestatus, 
+	applied_on TIMESTAMP WITHOUT TIME ZONE, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(employee_id) REFERENCES employees (id)
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/20/f405)

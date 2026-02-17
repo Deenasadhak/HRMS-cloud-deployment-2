@@ -1,0 +1,16 @@
+Tables: ['departments', 'employees', 'designations', 'attendance', 'leaves', 'leave_types', 'payroll', 'users', 'roles']
+
+Columns in 'employees':
+ - employee_id (INTEGER)
+ - first_name (VARCHAR(100))
+ - last_name (VARCHAR(100))
+ - email (VARCHAR(150))
+ - phone (VARCHAR(20))
+ - gender (VARCHAR(10))
+ - date_of_birth (DATE)
+ - hire_date (DATE)
+ - department_id (INTEGER)
+ - designation_id (INTEGER)
+ - salary (NUMERIC(10, 2))
+ - status (VARCHAR(20))
+ - created_at (TIMESTAMP)
